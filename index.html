@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Library</title>
+		<link rel="stylesheet" href="./styles/style.css" />
+		<link rel="stylesheet" href="./styles/reset.css" />
+
+		<link rel="icon" href="./images/" type="image/x-icon" />
+
+		<link rel="preload" href="./fonts/Inter-R.woff2" as="font" type="font/woff2" crossorigin />
+		<script src="./scripts/app.js" defer></script>
+	</head>
+	<body>
+		<div class="grid-container">
+			<div class="buttons">
+				<div class="button-container"><button class="add-book">Kitap Ekle</button></div>
+				
+				<div class="input-skeleton">
+					<div class="input-container">
+						<label for="title-input">Kitabın Adı</label
+						><input class="title-input" id="title-input" type="text" required />
+						<label for="author-input">Yazar</label
+						><input class="author-input" id="author-input" type="text" required />
+						<label for="page-input">Sayfa Numarası</label
+						><input
+							type="text"
+							class="page-input"
+							inputmode="numeric"
+							pattern="/[1-9]{1,4}/"
+							required
+							id="page-input"
+						/>
+						<label for="read-select">Okunma Durumu</label
+						><select id="read-select" class="read-select">
+							<option value="1">Okundu</option>
+							<option value="0" selected>Okunmadı</option>
+						</select>
+						<button class="kapat">Kapat</button>
+					</div>
+				</div>
+			</div>
+			<div class="books"></div>
+		</div>
+	</body>
+</html>
