@@ -98,18 +98,20 @@ body {
 }
 
 .book-card {
-	min-width: 30%;
+	
+	height: clamp(24rem,70%,36rem);
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	gap: 4em;
+	justify-content: space-around;
 	padding: var(--padding-main);
 	box-shadow: var(--shadow-elevation-medium);
 	border: 2px solid black;
 	border-radius: 8px;
-	flex-basis: 0;
+	flex-basis: 16rem;
+	flex-grow: 0;
+	flex-shrink: 1;
 	
-	justify-content: center;
 }
 .title {
 	font-size: 2rem;
@@ -171,4 +173,7 @@ button:active {
 .kapat{
 	font-size: 1.5rem !important;
 	font-weight: bold;
+}
+.delete-button{
+	font-size: 1.2rem;
 }
