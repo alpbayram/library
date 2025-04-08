@@ -70,7 +70,7 @@ body {
 	color:#dadbdb;
 }
 .grid-container {
-	padding: 2rem 0;
+	padding-top: 2rem;
 	display: grid;
 	height: 100vh;
 	
@@ -102,19 +102,20 @@ body {
 
 .book-card {
 	
-	height: clamp(24rem,70%,36rem);
+	height: clamp(12rem, 20%,24rem);
 	text-align: center;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: space-around;
 	padding: var(--padding-main);
 	box-shadow: var(--shadow-elevation-medium);
-	border: 2px solid black;
-	border-radius: 8px;
+	
+	border-radius: 4px;
 	flex-basis: 16rem;
 	flex-grow: 0;
 	flex-shrink: 1;
-	
+	border-color: rgb(102 102 102/1);
+	border-width: 1px;
 }
 .title {
 	font-size: 2rem;
