@@ -65,8 +65,7 @@ p {
 
 body {
 	background-color: #333333;
-	display: flex;
-	justify-content: center;
+	
 	color:#dadbdb;
 }
 .grid-container {
@@ -75,7 +74,7 @@ body {
 	height: 100vh;
 	
 	justify-content: center;
-	grid-template-columns:48rem ;
+	grid-template-columns: clamp(36rem,100vw,60rem);
 	grid-template-rows: 6rem 1fr;
 }
 .buttons {
@@ -84,19 +83,18 @@ body {
 	align-items: flex-start;
 	flex: 1;
 	justify-content: center;
-	
+	grid-column: 1/2;
+	grid-row: 1/2;
 }
 
 .books {
-	
-	display: flex;
-
-	justify-content: center;
-	flex-wrap: wrap;
+	grid-column: 1/2;
+	grid-row: 2/3;
+	display: grid;
+	grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
 	gap: var(--gap-main);
-	align-items: center;
 	overflow: auto;
-	align-items: stretch;
+	
 	
 }
 
@@ -105,17 +103,14 @@ body {
 	height: clamp(12rem, 20%,24rem);
 	text-align: center;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	flex-direction: column;
+	
 	padding: var(--padding-main);
 	box-shadow: var(--shadow-elevation-medium);
 	
 	border-radius: 4px;
-	flex-basis: 16rem;
-	flex-grow: 0;
-	flex-shrink: 1;
-	border-color: rgb(102 102 102/1);
-	border-width: 1px;
+	border: 1px solid rgb(102 102 102/1);
+	
 }
 .title {
 	font-size: 2rem;
@@ -157,7 +152,7 @@ body {
 	font-weight: bold;
 }
 button {
-	padding: 1rem 2rem;
+	
 	border: 1px solid black;
 	border-radius: 16px;
 	background-color: #1992d4;
