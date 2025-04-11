@@ -79,7 +79,7 @@ addBook.addEventListener("click", function (event) {
 		);
 		const last = myLibrary.at(-1);
 		console.log(last);
-		renderBookCard(last.id,last.title, last.author, last.page, last.read);
+		renderBookCard(last.id, last.title, last.author, last.page, last.read);
 		// titleInput.value = "";
 		// authorInput.value = "";
 		// pageInput.value = "";
@@ -121,7 +121,6 @@ books.addEventListener("click", function (event) {
 
 		const findOnArray = myLibrary.find(function (item, index, array) {
 			if (item.id == hedef) {
-			
 				return true;
 			}
 		});
@@ -136,7 +135,7 @@ books.addEventListener("click", function (event) {
 			console.log(findOnArray);
 			console.log(findOnArray.read);
 		}
-
-		
 	}
 });
+
+
