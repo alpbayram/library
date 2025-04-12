@@ -13,39 +13,45 @@
 		<script src="./scripts/app.js" defer></script>
 	</head>
 	<body>
+		<dialog class="input-skeleton">
+			<div class="input-container">
+				<label for="title-input">Kitabın Adı</label
+				><input class="title-input" id="title-input" type="text" required />
+				<label for="author-input">Yazar</label
+				><input class="author-input" id="author-input" type="text" required />
+				<label for="page-input">Sayfa Numarası</label
+				><input
+					type="text"
+					class="page-input"
+					inputmode="numeric"
+					pattern="/[1-9]{1,4}/"
+					required
+					id="page-input"
+				/>
+				<label for="read-select">Okunma Durumu</label
+				><select id="read-select" class="read-select">
+					<option value="1">Okundu</option>
+					<option value="0" selected>Okunmadı</option>
+				</select>
+				<button type="button" class="save-book">Kaydet</button>
+				<button type="button" class="kapat">Kapat</button>
+			</div>
+		</dialog>
 		<div class="grid-container">
-			<div class="buttons">
-				<div class="button-container"><button class="add-book">Kitap Ekle</button></div>
-
-				<div class="input-skeleton">
-					<div class="input-container">
-						<label for="title-input">Kitabın Adı</label
-						><input class="title-input" id="title-input" type="text" required />
-						<label for="author-input">Yazar</label
-						><input class="author-input" id="author-input" type="text" required />
-						<label for="page-input">Sayfa Numarası</label
-						><input
-							type="text"
-							class="page-input"
-							inputmode="numeric"
-							pattern="/[1-9]{1,4}/"
-							required
-							id="page-input"
-						/>
-						<label for="read-select">Okunma Durumu</label
-						><select id="read-select" class="read-select">
-							<option value="1">Okundu</option>
-							<option value="0" selected>Okunmadı</option>
-						</select>
-						<button class="kapat">Kapat</button>
-					</div>
+			<div class="header">
+				<div class="header-container">
+					<img class="header-icon" src="images/library.svg" alt="">
+					<p class="header-text">Explore</p>
+					
 				</div>
+				<button class="add-book">Add Book</button>
+				
 			</div>
 			<div class="books">
 				<div data-id="d96d7e2a-8002-4ce4-acaf-bd3cfc15ffc6" class="book-card">
-					
+					<div class="book-image-div">
 						<img class="book-card-img" src="images/book2.avif" alt="" />
-					
+					</div>
 
 					<div class="infos">
 						<div class="title">
@@ -59,22 +65,41 @@
 					<!-- <button class="delete-button">Kitabı sil.</button>
 					<button class="read-button">Okunma durumunu değiştir.</button> -->
 				</div>
-				<div data-id="22d06cfa-f0f9-42d6-a25a-774301a88480" class="book-card">
-					<div class="title">İrade Terbiyesi</div>
-					<div class="author">Jules Payot</div>
-					<div class="page">Sayfa Sayısı: 200</div>
-					<div class="read">Okundu</div>
-					<button class="delete-button">Kitabı sil.</button>
-					<button class="read-button">Okunma durumunu değiştir.</button>
+				<div data-id="d96d7e2a-8002-4ce4-acaf-bd3cfc15ffc6" class="book-card">
+					<div class="book-image-div">
+						<img class="book-card-img" src="images/book4.avif" alt="" />
+					</div>
+
+					<div class="infos">
+						<div class="title">
+							Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism
+						</div>
+						<div class="author">Jules Payot</div>
+						<div class="page">318 pages • digital • 2025</div>
+						<div class="read">Read</div>
+					</div>
+					<img class="dropdown" src="images/vert.svg" alt="" />
+					<!-- <button class="delete-button">Kitabı sil.</button>
+					<button class="read-button">Okunma durumunu değiştir.</button> -->
 				</div>
-				<div data-id="641784c9-3678-4346-9edc-eb00f2c15caa" class="book-card">
-					<div class="title">İrade Terbiyesi</div>
-					<div class="author">Jules Payot</div>
-					<div class="page">Sayfa Sayısı: 200</div>
-					<div class="read">Okunmadı</div>
-					<button class="delete-button">Kitabı sil.</button>
-					<button class="read-button">Okunma durumunu değiştir.</button>
+				<div data-id="d96d7e2a-8002-4ce4-acaf-bd3cfc15ffc6" class="book-card">
+					<div class="book-image-div">
+						<img class="book-card-img" src="images/book3.avif" alt="" />
+					</div>
+
+					<div class="infos">
+						<div class="title">
+							Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism
+						</div>
+						<div class="author">Jules Payot</div>
+						<div class="page">318 pages • digital • 2025</div>
+						<div class="read">Read</div>
+					</div>
+					<img class="dropdown" src="images/vert.svg" alt="" />
+					<!-- <button class="delete-button">Kitabı sil.</button>
+					<button class="read-button">Okunma durumunu değiştir.</button> -->
 				</div>
+				
 			</div>
 		</div>
 	</body>
