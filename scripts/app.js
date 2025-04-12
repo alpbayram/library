@@ -33,18 +33,28 @@ function renderBookCard(id, title, author, page, read) {
 	const bookAuthor = document.createElement("div");
 	const bookPage = document.createElement("div");
 	const bookRead = document.createElement("div");
+	const infos = document.createElement("div");
+	const bookImageDıv = document.createElement("div");
+	const dropdown = document.createElement("img");
+	const bookCardImage = document.createElement("img");
 	const bookDeleteButton = document.createElement("button");
 	const bookReadButton = document.createElement("button");
 
 	bookTitle.textContent = title;
 	bookAuthor.textContent = author;
-	bookPage.textContent = "Sayfa Sayısı: " + page;
+	bookPage.textContent = `${page} pages • digital • 2025`;
 	bookRead.textContent = read == 1 ? "Okundu" : "Okunmadı";
 	bookDeleteButton.textContent = "Kitabı sil.";
 	bookReadButton.textContent = "Okunma durumunu değiştir.";
 
 	bookCard.dataset.id = id;
 
+	bookImageDıv.classList.add("book-image-div")
+	bookCardImage.classList.add("book-card-img")
+	bookCardImage.setAttribute('src','/images/book1.avif');
+	dropdown.setAttribute('src','/images/vert.svg');
+	infos.classList.add("infos")
+	dropdown.classList.add("dropdown")
 	bookCard.classList.add("book-card");
 	bookTitle.classList.add("title");
 	bookAuthor.classList.add("author");
@@ -52,13 +62,25 @@ function renderBookCard(id, title, author, page, read) {
 	bookRead.classList.add("read");
 	bookDeleteButton.classList.add("delete-button");
 	bookReadButton.classList.add("read-button");
+
+
+
+
+
+
 	books.appendChild(bookCard);
-	bookCard.appendChild(bookTitle);
-	bookCard.appendChild(bookAuthor);
-	bookCard.appendChild(bookPage);
-	bookCard.appendChild(bookRead);
-	bookCard.appendChild(bookDeleteButton);
-	bookCard.appendChild(bookReadButton);
+	bookCard.appendChild(bookImageDıv)
+	
+	
+	bookCard.appendChild(infos)
+	bookCard.appendChild(dropdown)
+	bookImageDıv.appendChild(bookCardImage)
+	infos.appendChild(bookTitle);
+	infos.appendChild(bookAuthor);
+	infos.appendChild(bookPage);
+	infos.appendChild(bookRead);
+	// bookCard.appendChild(bookDeleteButton);
+	// bookCard.appendChild(bookReadButton);
 }
 function renderLibrary() {
 	myLibrary.forEach(function (item, index, array) {
@@ -68,9 +90,11 @@ function renderLibrary() {
 
 renderLibrary();
 
-addBook.addEventListener("click", function (event) {
-	event.preventDefault();
-	if (inputContainer.style.display == "flex") {
+document.addEventListener("click", function (event) {
+	const dialog = document.querySelector("dialog");
+	if (event.target.matches(".add-book")) {
+		dialog.showModal();
+	} else if (event.target.matches(".save-book")) {
 		createBookAndAddToLibrary(
 			titleInput.value,
 			authorInput.value,
@@ -80,22 +104,13 @@ addBook.addEventListener("click", function (event) {
 		const last = myLibrary.at(-1);
 		console.log(last);
 		renderBookCard(last.id, last.title, last.author, last.page, last.read);
-		// titleInput.value = "";
-		// authorInput.value = "";
-		// pageInput.value = "";
-		// inputContainer.style.display = "none";
-	} else {
-		inputContainer.style.display = "flex";
+		dialog.close();
+	}else if (event.target==closeAddBook){
+		dialog.close();
 	}
 });
-closeAddBook.addEventListener("click", function (event) {
-	event.preventDefault();
-	if (inputContainer.style.display == "flex") {
-		inputContainer.style.display = "none";
-	} else {
-		inputContainer.style.display = "flex";
-	}
-});
+
+
 
 books.addEventListener("click", function (event) {
 	if (event.target.matches(".delete-button")) {
@@ -137,5 +152,3 @@ books.addEventListener("click", function (event) {
 		}
 	}
 });
-
-

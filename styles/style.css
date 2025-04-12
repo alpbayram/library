@@ -51,43 +51,68 @@
 	font-display: optional;
 }
 img {
-	
 	height: auto;
 	max-width: 100%;
-
-	
 }
 p {
 	min-width: min-content;
 }
 * {
-	outline: 1px solid black;
+	/* outline: 1px solid black; */
 }
 
 body {
 	background-color: #333333;
 
-	color: #dadbdb;
+	color: rgb(245, 245, 245);
 }
 .grid-container {
 	padding-top: 2rem;
 	display: grid;
 	height: 100vh;
-
+	row-gap: 2rem;
 	justify-content: center;
-	grid-template-columns: minmax(1rem, 1fr);
+	grid-template-columns: 1fr;
 	grid-template-rows: 6rem 1fr;
+	overflow: auto;
 }
-.buttons {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	flex: 1;
+.header {
+	display: grid;
+	grid-template-columns: repeat(3, 26rem);
 	justify-content: center;
+	align-content: center;
 	grid-column: 1/2;
 	grid-row: 1/2;
+	justify-items: center;
+	align-items: center;
+	outline: 1px solid rgb(102 102 102/1);
+	border-radius: 8px;
+	font-weight: bold;
+	width: min(78rem, 100%);
+	justify-self: center;
 }
+.header-container {
+	display: flex;
+	flex-direction: row;
 
+	grid-column: 2 / 3;
+	font-size: 2rem;
+}
+.header-icon {
+	height: 1.5em;
+}
+.header-text {
+	color: rgb(42, 181, 192);
+}
+.add-book {
+	padding: 6px;
+	grid-column: 3 / 4;
+	width: 50%;
+	font-size: 0.8rem;
+	text-align: start;
+	justify-self: end;
+	margin-right: 8px;
+}
 .books {
 	grid-column: 1/2;
 	grid-row: 2/3;
@@ -96,38 +121,43 @@ body {
 
 	justify-content: center;
 	grid-auto-rows: 16rem;
-	gap: var(--gap-main);
-	overflow: auto;
+	gap: 2rem;
+
+	padding: 1rem 0;
 }
 
 .book-card {
 	font-size: 1.3rem;
 	display: flex;
-	justify-content: space-between;
-	
+	justify-content: center;
+	height: 100%;
 	box-shadow: var(--shadow-elevation-medium);
-	border-radius: 4px;
-	border: 1px solid rgb(102 102 102/1);
+
+	outline: 1px solid rgb(102 102 102/1);
 }
 .book-card-img {
-	
-	border-radius: 4px;
-	background: #bb7851;
-	
+	max-height: 100%;
+}
+.book-image-div {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	min-width: 8rem;
 }
 .dropdown {
 	height: 1.65em;
-	margin-top: 1rem;
+	margin-top: clamp(0.2rem, 1vw, 1.5rem);
 }
 .infos {
 	display: flex;
+	flex-basis: 60%;
 	flex-grow: 1;
 	flex-direction: column;
 	align-items: flex-start;
-	
+
 	gap: clamp(0.5rem, 0.5vw, 1.5rem);
-	
-	padding: clamp(0.2rem, 1vw, 1.5rem) clamp(0.2rem, 1vw, 1.5rem);
+
+	padding: clamp(0.2rem, 1vw, 1.5rem);
 }
 .title {
 	font-size: 1.1em;
@@ -149,41 +179,16 @@ body {
 	justify-content: center;
 	padding: 0.2rem 0;
 	border: 2px solid rgb(102 102 102/1);
-	width: max(70%,1rem);
+	width: max(70%, 1rem);
 	align-self: center;
 	margin-left: 3.025em;
 }
-.input-container {
-	display: none;
-	gap: 1rem;
-	flex-direction: column;
-}
-.input-skeleton {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	flex-basis: 70%;
-	min-width: 0;
-	width: 100%;
-	margin-top: auto;
-	justify-content: center;
-	padding: var(--padding-main);
-}
-.button-container {
-	display: flex;
-	flex-grow: 1;
-	width: 100%;
-	min-width: 0;
-	justify-content: center;
-	align-items: center;
-	font-size: 1.5rem;
-	font-weight: bold;
-}
+
 button {
 	border: 1px solid black;
-	border-radius: 16px;
-	background-color: #1992d4;
-	color: white;
+
+	background-color: rgb(42, 181, 192);
+	color: #333333;
 
 	cursor: pointer;
 }
@@ -203,7 +208,54 @@ button:active {
 .delete-button {
 	font-size: 1.2rem;
 }
+
+dialog::backdrop {
+	background-color: rgba(0, 0, 0, 0.75);
+	backdrop-filter: blur(2px);
+}
+dialog {
+	margin: auto;
+	background-color: #333333;
+	color: white;
+	border: none;
+}
+input {
+	background-color: #4c4c4c;
+	color: #f1f1f1;
+	border: 1px solid #555555;
+}
+input:focus {
+	outline: none;
+	border-color: #888;
+	background-color: #3a3a3a;
+}
+
 @media (max-width: 78rem) {
-	.books{grid-template-columns:  min(38rem,100%)}
-	
+	.books {
+		grid-template-columns: min(38rem, 100%);
+	}
+	.grid-container {
+		grid-template-columns: min(38rem, 100%);
+	}
+	.book-card {
+		font-size: 1.1rem;
+	}
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.add-book {
+		width: 30%;
+	}
+	/* .header{
+		grid-template-columns: repeat(2, 19rem);
+	}
+	.header-container{
+		grid-column: 1/2;
+	}
+	.add-book{
+		grid-column: 2/3;
+		justify-self: center;
+	} */
 }
