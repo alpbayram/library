@@ -15,26 +15,43 @@
 	<body>
 		<dialog class="input-skeleton">
 			<div class="input-container">
-				<label for="title-input">Kitabın Adı</label
-				><input class="title-input" id="title-input" type="text" required />
-				<label for="author-input">Yazar</label
-				><input class="author-input" id="author-input" type="text" required />
-				<label for="page-input">Sayfa Numarası</label
+				<label for="title-input">Book Title</label
+				><input
+					class="title-input input"
+					id="title-input"
+					type="text"
+					required
+					maxlength="70"
+					placeholder="3-70 Character"
+					pattern="^[A-Za-zşŞıİçÇöÖüÜĞğ\d]{3,70}$"
+				/>
+				<label for="author-input">Author</label
+				><input
+					class="author-input input"
+					id="author-input"
+					type="text"
+					required
+					maxlength="20"
+					placeholder="3-20 Character"
+					pattern="^[A-Za-zşŞıİçÇöÖüÜĞğ\d]{3,20}$"
+				/>
+				<label for="page-input">Page Count</label
 				><input
 					type="text"
-					class="page-input"
+					class="page-input input"
 					inputmode="numeric"
-					pattern="/[1-9]{1,4}/"
+					pattern="[0-9]{1,4}"
+					placeholder="1-9999"
 					required
 					id="page-input"
 				/>
-				<label for="read-select">Okunma Durumu</label
+				<label for="">Read Status</label
 				><select id="read-select" class="read-select">
-					<option value="1">Okundu</option>
-					<option value="0" selected>Okunmadı</option>
+					<option value="1">Read</option>
+					<option value="0" selected>Unread</option>
 				</select>
-				<button type="button" class="save-book">Kaydet</button>
-				<button type="button" class="kapat">Kapat</button>
+				<button type="button" class="save-book">Save</button>
+				<button type="button" class="close">Close</button>
 			</div>
 		</dialog>
 		<div class="grid-container">
@@ -46,7 +63,7 @@
 				<button class="add-book">Add Book</button>
 			</div>
 			<div class="books">
-				<div data-id="d96d7e2a-8002-4ce4-acaf-bd3cfc15ffc6" class="book-card">
+				<!-- <div data-id="1" class="book-card">
 					<div class="book-image-div">
 						<img class="book-card-img" src="images/book2.avif" alt="" />
 					</div>
@@ -61,62 +78,16 @@
 					</div>
 					<div class="dropdown-container">
 						<img class="dropdown-icon" src="images/vert.svg" alt="" />
-						<ul class="dropdown-menu">
-							<li class="menu-read-state"><img src="images/read.svg" alt="">Mark as Read</li>
-							<li class="menu-trash"><img src="images/trash.svg" alt="">Delete Book</li>
-							
+						<ul class="dropdown-menu" data-menu-state="">
+							<li class="menu-read-state">
+								<img src="images/read.svg" alt="" />Mark as Read
+							</li>
+							<li class="menu-trash">
+								<img src="images/trash.svg" alt="" />Delete Book
+							</li>
 						</ul>
-					</div>
-
-					<!-- <button class="delete-button">Kitabı sil.</button>
-					<button class="read-button">Okunma durumunu değiştir.</button> -->
-				</div>
-				<div data-id="d96d7e2a-8002-4ce4-acaf-bd3cfc15ffc6" class="book-card">
-					<div class="book-image-div">
-						<img class="book-card-img" src="images/book4.avif" alt="" />
-					</div>
-
-					<div class="infos">
-						<div class="title">
-							Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism
-						</div>
-						<div class="author">Jules Payot</div>
-						<div class="page">318 pages • digital • 2025</div>
-						<div class="read">Read</div>
-					</div>
-					<div class="dropdown-container">
-						<img class="dropdown-icon" src="images/vert.svg" alt="" />
-						<ul class="dropdown-menu">
-							<li>Mark as Read</li>
-							<li>Delete Book</li>
-						</ul>
-					</div>
-					<!-- <button class="delete-button">Kitabı sil.</button>
-					<button class="read-button">Okunma durumunu değiştir.</button> -->
-				</div>
-				<div data-id="d96d7e2a-8002-4ce4-acaf-bd3cfc15ffc6" class="book-card">
-					<div class="book-image-div">
-						<img class="book-card-img" src="images/book3.avif" alt="" />
-					</div>
-
-					<div class="infos">
-						<div class="title">
-							Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism
-						</div>
-						<div class="author">Jules Payot</div>
-						<div class="page">318 pages • digital • 2025</div>
-						<div class="read">Read</div>
-					</div>
-					<div class="dropdown-container">
-						<img class="dropdown-icon" src="images/vert.svg" alt="" />
-						<ul class="dropdown-menu">
-							<li>Mark as Read</li>
-							<li>Delete Book</li>
-						</ul>
-					</div>
-					<!-- <button class="delete-button">Kitabı sil.</button>
-					<button class="read-button">Okunma durumunu değiştir.</button> -->
-				</div>
+					</div>					
+				</div> -->
 			</div>
 		</div>
 	</body>
