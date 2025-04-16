@@ -69,7 +69,7 @@ body {
 .grid-container {
 	padding-top: 2rem;
 	display: grid;
-	height: 100vh;
+	padding: 3rem 1rem;
 	row-gap: 2rem;
 	justify-content: center;
 	grid-template-columns: 1fr;
@@ -123,26 +123,35 @@ body {
 	grid-auto-rows: 16rem;
 	gap: 2rem;
 
-	padding: 1rem 0;
+	/* padding: 1rem 0; */
 }
 
 .book-card {
+	border-radius: 8px;
+
 	font-size: 1.3rem;
 	display: flex;
 	justify-content: center;
 	height: 100%;
 	box-shadow: var(--shadow-elevation-medium);
 
-	outline: 1px solid rgb(102 102 102/1);
+	border: 2px solid rgb(102 102 102/1);
+	container-name: book-card;
+	container-type: inline-size;
 }
 .book-card-img {
 	max-height: 100%;
+	border-radius: 4px;
 }
 .book-image-div {
 	height: 100%;
 	display: flex;
 	align-items: center;
-	min-width: 8rem;
+	min-width: 7rem;
+	z-index: -1;
+	flex-basis: max-content;
+	flex-shrink: 0;
+	
 }
 
 .infos {
@@ -151,7 +160,7 @@ body {
 	flex-grow: 1;
 	flex-direction: column;
 	align-items: flex-start;
-
+	flex-shrink: 40;
 	gap: clamp(0.5rem, 0.5vw, 1.5rem);
 
 	padding: clamp(0.2rem, 1vw, 1.5rem);
@@ -185,6 +194,8 @@ body {
 	margin-top: clamp(0.2rem, 1vw, 1.5rem);
 	display: flex;
 	align-self: baseline;
+	flex-basis: max-content;
+	flex-shrink: 0;
 }
 .dropdown-icon {
 	cursor: pointer;
@@ -244,9 +255,8 @@ button:active {
 	font-weight: bold;
 	padding: 6px;
 	font-size: 1rem;
-	
 }
-.save-book{
+.save-book {
 	margin-top: 2rem;
 	margin-bottom: 0.5rem;
 }
@@ -254,16 +264,14 @@ button:active {
 	font-size: 1.2rem;
 }
 .read-select {
-	background-color: rgb(42, 181, 192);
-	color: #333333;
-	border: 1px solid black;
+	background-color: #4c4c4c;
+  color: #f1f1f1;
+  border: 1px solid #555555;
 	cursor: pointer;
-	font-weight: bold;
-	height:2rem;
+	
+	height: 2rem;
 	font-size: 1rem;
-
 }
-
 
 dialog::backdrop {
 	background-color: rgba(0, 0, 0, 0.75);
@@ -316,7 +324,11 @@ input:focus {
 	outline: 2px solid green;
 	outline-offset: 2px;
 }
-
+@container book-card (max-width: 18.75rem) {
+	.book-image-div {
+		flex-shrink: 1;
+	}
+}
 @media (max-width: 78rem) {
 	.books {
 		grid-template-columns: min(38rem, 100%);
@@ -334,6 +346,9 @@ input:focus {
 	}
 	.add-book {
 		width: 30%;
+	}
+	.title {
+		max-height: 7.26rem;
 	}
 	/* .header{
 		grid-template-columns: repeat(2, 19rem);
