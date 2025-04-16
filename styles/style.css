@@ -151,7 +151,6 @@ body {
 	z-index: -1;
 	flex-basis: max-content;
 	flex-shrink: 0;
-	
 }
 
 .infos {
@@ -265,10 +264,10 @@ button:active {
 }
 .read-select {
 	background-color: #4c4c4c;
-  color: #f1f1f1;
-  border: 1px solid #555555;
+	color: #f1f1f1;
+	border: 1px solid #555555;
 	cursor: pointer;
-	
+
 	height: 2rem;
 	font-size: 1rem;
 }
@@ -290,6 +289,7 @@ dialog {
 	display: flex;
 	flex-direction: column;
 	padding: 2rem;
+	font-size: 1.2rem;
 }
 label {
 	margin-bottom: 0.5rem;
