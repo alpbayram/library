@@ -11,15 +11,15 @@ const readSelect = document.querySelector(".read-select");
 class MyBooks {
 	#id;
 	static myLibrary = [];
-	
+
 	constructor(title, author, page, read) {
 		this.#id = crypto.randomUUID();
 		this.title = title;
 		this.author = author;
 		this.page = page;
-		
+
 		this.read = read;
-		MyBooks.myLibrary.push(this)
+		MyBooks.myLibrary.push(this);
 	}
 	get id() {
 		return this.#id;
@@ -293,3 +293,21 @@ books.addEventListener("click", function (event) {
 		}
 	}
 });
+
+function stopDoubleTapZoom() {
+	let lastTouch = 0;
+	
+	return document.addEventListener(
+		"touchend",
+		function (e) {
+			const now = Date.now();
+			if (now - lastTouch < 300) {
+				e.preventDefault();
+			}
+			lastTouch = now;
+		},
+		{ passive: false }
+	)();
+
+}
+stopDoubleTapZoom();
