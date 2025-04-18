@@ -8,30 +8,73 @@ const authorInput = document.querySelector(".author-input");
 const pageInput = document.querySelector(".page-input");
 const readSelect = document.querySelector(".read-select");
 
-const myLibrary = [];
+class MyBooks {
+	#id;
+	static myLibrary = [];
 
-function Book(title, author, page, read) {
-	this.id = crypto.randomUUID();
-	this.title = title;
-	this.author = author;
-	this.page = page;
-	this.read = read;
-}
+	constructor(title, author, page, read) {
+		this.#id = crypto.randomUUID();
+		this.title = title;
+		this.author = author;
+		this.page = page;
 
-function createBookAndAddToLibrary(title, author, page, read) {
-	const bookName = new Book(title, author, page, read);
-	myLibrary.push(bookName);
+		this.read = read;
+		MyBooks.myLibrary.push(this);
+	}
+	get id() {
+		return this.#id;
+	}
+	set id(id) {
+		return console.log("You cannot set id.");
+	}
+	get infos() {
+		const readState = this.read == 1 ? "Read" : "Unread";
+		return `${this.title} ${this.author} ${this.page} ${readState}`;
+	}
+
+	// pushToArray() {
+	// 	MyBooks.myLibrary.push(this);
+	// }
 }
-createBookAndAddToLibrary(
+const book1 = new MyBooks(
 	"Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism",
 	"Jules Payot",
 	"304",
 	"0"
 );
-createBookAndAddToLibrary("In Praise of Idleness", "Bertrand Russell", "184", "1");
-createBookAndAddToLibrary("The Burnout Society", "Byung-Chul Han", "72", "1");
-createBookAndAddToLibrary("Deep Work", "Cal Newport", "304", "0");
-createBookAndAddToLibrary("Meditations", "Marcus Aurelius", "304", "0");
+const book2 = new MyBooks("In Praise of Idleness", "Bertrand Russell", "184", "1");
+const book3 = new MyBooks("The Burnout Society", "Byung-Chul Han", "72", "1");
+const book4 = new MyBooks("Deep Work", "Cal Newport", "304", "0");
+const book5 = new MyBooks("Meditations", "Marcus Aurelius", "304", "0");
+// const myLibrary = [];
+
+// book1.pushToArray();
+// book2.pushToArray();
+// book3.pushToArray();
+// book4.pushToArray();
+// book5.pushToArray();
+// function Book(title, author, page, read) {
+// 	this.id = crypto.randomUUID();
+// 	this.title = title;
+// 	this.author = author;
+// 	this.page = page;
+// 	this.read = read;
+// }
+
+// function createBookAndAddToLibrary(title, author, page, read) {
+// 	const bookName = new Book(title, author, page, read);
+// 	myLibrary.push(bookName);
+// }
+// createBookAndAddToLibrary(
+// 	"Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism",
+// 	"Jules Payot",
+// 	"304",
+// 	"0"
+// );
+// createBookAndAddToLibrary("In Praise of Idleness", "Bertrand Russell", "184", "1");
+// createBookAndAddToLibrary("The Burnout Society", "Byung-Chul Han", "72", "1");
+// createBookAndAddToLibrary("Deep Work", "Cal Newport", "304", "0");
+// createBookAndAddToLibrary("Meditations", "Marcus Aurelius", "304", "0");
 
 function renderBookCard(id, title, author, page, read) {
 	function getRandomIntInclusive(min, max) {
@@ -125,7 +168,7 @@ function renderBookCard(id, title, author, page, read) {
 	// bookCard.appendChild(bookReadButton);
 }
 function renderLibrary() {
-	myLibrary.forEach(function (item, index, array) {
+	MyBooks.myLibrary.forEach(function (item, index, array) {
 		renderBookCard(item.id, item.title, item.author, item.page, item.read);
 	});
 }
@@ -152,7 +195,7 @@ document.addEventListener("click", function (event) {
 				pageInput.value,
 				readSelect.options[readSelect.selectedIndex].value
 			);
-			const last = myLibrary.at(-1);
+			const last = MyBooks.myLibrary.at(-1);
 			console.log(last);
 			renderBookCard(last.id, last.title, last.author, last.page, last.read);
 			titleInput.value = "";
@@ -210,21 +253,21 @@ books.addEventListener("click", function (event) {
 			const willDeleteBookCards = event.target.closest(".book-card");
 			willDeleteBookCards.remove();
 
-			const indexNumber = myLibrary.findIndex(function (item, index, array) {
+			const indexNumber = MyBooks.myLibrary.findIndex(function (item, index, array) {
 				console.log(item.id);
 				if (item.id == hedef) {
 					return true;
 				}
 			});
 
-			myLibrary.splice(indexNumber, 1);
+			MyBooks.myLibrary.splice(indexNumber, 1);
 		} else if (event.target.closest(".menu-read-state")) {
 			const read = event.target.closest(".book-card").querySelector(".read");
 
 			const hedef = event.target.closest(".book-card").attributes["data-id"].nodeValue;
 			const menuReadState = event.target.closest(".menu-read-state");
 
-			const findOnArray = myLibrary.find(function (item, index, array) {
+			const findOnArray = MyBooks.myLibrary.find(function (item, index, array) {
 				if (item.id == hedef) {
 					return true;
 				}
@@ -250,3 +293,21 @@ books.addEventListener("click", function (event) {
 		}
 	}
 });
+
+function stopDoubleTapZoom() {
+	let lastTouch = 0;
+	
+	return document.addEventListener(
+		"touchend",
+		function (e) {
+			const now = Date.now();
+			if (now - lastTouch < 300) {
+				e.preventDefault();
+			}
+			lastTouch = now;
+		},
+		{ passive: false }
+	)();
+
+}
+stopDoubleTapZoom();
