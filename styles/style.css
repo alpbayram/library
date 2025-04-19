@@ -63,7 +63,7 @@ p {
 
 body {
 	background-color: #333333;
-
+	touch-action: manipulation;
 	color: rgb(245, 245, 245);
 }
 .grid-container {
@@ -93,6 +93,7 @@ body {
 }
 .header-container {
 	display: flex;
+	flex-grow: 1;
 	flex-direction: row;
 
 	grid-column: 2 / 3;
@@ -197,8 +198,23 @@ body {
 	flex-shrink: 0;
 }
 .dropdown-icon {
+	pointer-events: none;
+	height: 100%;
+}
+.dropdown-button {
+	background-color: #333333;
+	border: none;
+	height: clamp(2.5rem, 5vw, 2.8rem);
+	border-radius: 8px;
 	cursor: pointer;
-	height: 1.65em;
+	padding: 0.2rem;
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.dropdown-button:active {
+	background-color: #555555;
 }
 .dropdown-menu {
 	position: absolute;
@@ -215,6 +231,7 @@ body {
 	right: 0px;
 	padding: 0.6rem 0;
 }
+
 .dropdown-menu li {
 	padding: 0.6rem 0.6rem 0.6rem 1.2rem;
 	cursor: pointer;
@@ -231,7 +248,9 @@ body {
 .dropdown-menu[data-menu-state="open"] {
 	display: flex;
 }
-button {
+.save-book,
+.close,
+.add-book {
 	border: 1px solid black;
 
 	background-color: rgb(42, 181, 192);
@@ -239,12 +258,16 @@ button {
 
 	cursor: pointer;
 }
-button:hover {
+.save-book:hover,
+.close:hover,
+.add-book:hover {
 	background-color: #10608b;
 	color: #ffffff;
 }
 
-button:active {
+.save-book:active,
+.close:active,
+.add-book:active {
 	background-color: #10608b;
 
 	transform: translateY(4px);
