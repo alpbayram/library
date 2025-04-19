@@ -97,6 +97,7 @@ function renderBookCard(id, title, author, page, read) {
 	const bookImageDıv = document.createElement("div");
 
 	const dropdownContainer = document.createElement("div");
+	const dropdownButton = document.createElement("button");
 	const dropdownIcon = document.createElement("img");
 	const dropdownMenu = document.createElement("ul");
 	const dropdownMenuItem1 = document.createElement("li");
@@ -125,6 +126,7 @@ function renderBookCard(id, title, author, page, read) {
 	bookCardImage.classList.add("book-card-img");
 	bookCardImage.setAttribute("src", `images/book${bookRandom}.avif`);
 	dropdownIcon.setAttribute("src", "images/vert.svg");
+	dropdownButton.setAttribute("ontouchstart", "");
 	const readState = read == 1 ? "images/unread.svg" : "images/read.svg";
 	menuItem1Icon.setAttribute("src", readState);
 
@@ -132,7 +134,9 @@ function renderBookCard(id, title, author, page, read) {
 	infos.classList.add("infos");
 
 	dropdownContainer.classList.add("dropdown-container");
+	dropdownButton.classList.add("dropdown-button");
 	dropdownIcon.classList.add("dropdown-icon");
+
 	dropdownMenu.classList.add("dropdown-menu");
 	dropdownMenuItem1.classList.add("menu-read-state");
 	dropdownMenuItem2.classList.add("menu-trash");
@@ -150,7 +154,8 @@ function renderBookCard(id, title, author, page, read) {
 
 	bookCard.appendChild(infos);
 	bookCard.appendChild(dropdownContainer);
-	dropdownContainer.appendChild(dropdownIcon);
+	dropdownContainer.appendChild(dropdownButton);
+	dropdownButton.appendChild(dropdownIcon);
 	dropdownContainer.appendChild(dropdownMenu);
 	dropdownMenu.appendChild(dropdownMenuItem1);
 	dropdownMenu.appendChild(dropdownMenuItem2);
@@ -209,13 +214,16 @@ document.addEventListener("click", function (event) {
 		}
 	} else if (event.target == closeAddBook) {
 		dialog.close();
-	} else if (!event.target.matches(".dropdown-menu") && !event.target.matches(".dropdown-icon")) {
+	} else if (
+		!event.target.matches(".dropdown-menu") &&
+		!event.target.matches(".dropdown-button")
+	) {
 		menu.forEach(function (item) {
 			if (item.dataset.menuState == "open") {
 				item.dataset.menuState = "";
 			}
 		});
-	} else if (event.target.matches(".dropdown-icon")) {
+	} else if (event.target.matches(".dropdown-button")) {
 		menu.forEach(function (item) {
 			if (
 				item.dataset.menuState == "open" &&
@@ -233,8 +241,8 @@ document.addEventListener("click", function (event) {
 books.addEventListener("click", function (event) {
 	const menu = event.target.closest(".dropdown-menu");
 
-	if (event.target.matches(".dropdown-icon")) {
-		// console.log(event.target.nextElementSibling);
+	if (event.target.matches(".dropdown-button")) {
+		console.log(event.target.nextElementSibling);
 		if (event.target.nextElementSibling.dataset.menuState) {
 			event.target.nextElementSibling.dataset.menuState = "";
 		} else {
@@ -296,7 +304,7 @@ books.addEventListener("click", function (event) {
 
 function stopDoubleTapZoom() {
 	let lastTouch = 0;
-	
+
 	return document.addEventListener(
 		"touchend",
 		function (e) {
@@ -308,6 +316,5 @@ function stopDoubleTapZoom() {
 		},
 		{ passive: false }
 	)();
-
 }
-stopDoubleTapZoom();
+// stopDoubleTapZoom();
