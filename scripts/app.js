@@ -61,10 +61,9 @@ const book5 = new MyBooks("Meditations", "Marcus Aurelius", "304", "0");
 // 	this.read = read;
 // }
 
-// function createBookAndAddToLibrary(title, author, page, read) {
-// 	const bookName = new Book(title, author, page, read);
-// 	myLibrary.push(bookName);
-// }
+function createBook(title, author, page, read) {
+	new MyBooks(title, author, page, read);
+}
 // createBookAndAddToLibrary(
 // 	"Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism",
 // 	"Jules Payot",
@@ -194,7 +193,7 @@ document.addEventListener("click", function (event) {
 			authorInput.checkValidity() &&
 			pageInput.checkValidity()
 		) {
-			createBookAndAddToLibrary(
+			createBook(
 				titleInput.value,
 				authorInput.value,
 				pageInput.value,
