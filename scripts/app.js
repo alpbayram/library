@@ -37,15 +37,15 @@ class MyBooks {
 	// }
 }
 const book1 = new MyBooks(
-	"Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism",
-	"Jules Payot",
+	"The IT Support Handbook: A How-To Guide",
+	"Mike Halsey",
 	"304",
 	"0"
 );
-const book2 = new MyBooks("In Praise of Idleness", "Bertrand Russell", "184", "1");
-const book3 = new MyBooks("The Burnout Society", "Byung-Chul Han", "72", "1");
-const book4 = new MyBooks("Deep Work", "Cal Newport", "304", "0");
-const book5 = new MyBooks("Meditations", "Marcus Aurelius", "304", "0");
+const book2 = new MyBooks("Exam Ref DP-900 Microsoft Azure Data Fundamentals", "Daniel Seara", "184", "1");
+const book3 = new MyBooks("Help Desk Practitioner's Handbook", "Barbara Czegel", "72", "1");
+const book4 = new MyBooks("Learn Power BI: A comprehensive, step-by-step guide for beginners", "Greg Deckler", "304", "0");
+const book5 = new MyBooks("Microsoft 365 Administration Inside Out", "Aaron Guilmette ", "304", "0");
 // const myLibrary = [];
 
 // book1.pushToArray();
